@@ -5,13 +5,12 @@ import {
 } from "react-native";
 
 
-export default function NumInput() {
+export default function NumInput({ num, setNum }) {
   return (
     <View style={styles.numInput}>
       <TextInput
         style={styles.numInputText}
-        placeholder="0000"
-        value="987654321"
+        value={num}
       />
     </View>
   )
@@ -19,13 +18,14 @@ export default function NumInput() {
 
 const styles = StyleSheet.create({
   numInput: {
-    flex: 1,
+    flex: 2,
     width: "100%",
     justifyContent: "flex-end",
     marginBottom: 30,
+    alignItems: "center"
   },
   numInputText: {
-    width: "100%",
+    width: "90%",
     color: "#fff",
     fontSize: 50,
     letterSpacing: 4,

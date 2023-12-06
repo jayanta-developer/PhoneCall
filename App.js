@@ -1,9 +1,14 @@
+import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
-import { Zocial } from "@expo/vector-icons";
-
-import { SimpleLineIcons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
+import {
+  Zocial,
+  Ionicons,
+  SimpleLineIcons,
+  AntDesign,
+  FontAwesome5,
+  Foundation,
+} from "@expo/vector-icons";
 
 //components
 import NavigationBar from "./Components/Navigation";
@@ -11,6 +16,15 @@ import NapPad from "./Components/NamPad";
 import NumInput from "./Components/NamInput";
 
 export default function App() {
+  const [num, setNum] = useState("");
+
+  const handleDeleteNum = () => {
+    if (num.length > 0) {
+      const updatedNum = num.slice(0, -1);
+      setNum(updatedNum);
+    }
+  };
+
   return (
     <>
       <StatusBar style="light" />
@@ -20,23 +34,30 @@ export default function App() {
           <AntDesign
             style={styles.optionIcon}
             name="search1"
-            size={24}
-            color="#f2f2f2"
+            size={22}
+            color="#A0A0A0"
           />
-          <SimpleLineIcons name="options-vertical" size={24} color="#f2f2f2" />
+          <SimpleLineIcons name="options-vertical" size={20} color="#A0A0A0" />
         </View>
 
         {/* Numimport */}
-        <NumInput />
+        <NumInput num={num} setNum={setNum} />
 
         {/* numPad */}
-        <NapPad />
+        <NapPad num={num} setNum={setNum} />
 
         {/* call btn */}
         <View style={styles.callBtnBox}>
+          <Foundation name="video" size={24} color="#fff" />
           <View style={styles.callBtn}>
             <Zocial name="call" size={40} color="#fff" />
           </View>
+          <FontAwesome5
+            onPress={handleDeleteNum}
+            name="backspace"
+            size={24}
+            color="#fff"
+          />
         </View>
 
         {/* navigation */}
@@ -57,15 +78,17 @@ const styles = StyleSheet.create({
 
   callBtnBox: {
     width: "100%",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
+    flexDirection: "row",
+    paddingHorizontal: 60,
   },
   callBtn: {
     width: 70,
     height: 70,
     borderRadius: "50%",
     overflow: "hidden",
-    backgroundColor: "green",
+    backgroundColor: "#9EB8B3",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 20,
@@ -73,12 +96,15 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   topNav: {
+    flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-end",
-    marginTop: 40,
+    marginTop: 50,
+    paddingHorizontal: 20,
   },
   optionIcon: {
     marginLeft: 50,
+    paddingRight: 20,
   },
 });
