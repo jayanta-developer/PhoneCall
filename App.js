@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import {
   Zocial,
   Ionicons,
@@ -48,16 +48,29 @@ export default function App() {
 
         {/* call btn */}
         <View style={styles.callBtnBox}>
-          <Foundation name="video" size={24} color="#fff" />
+          <TouchableOpacity activeOpacity={0.7}>
+            <Foundation
+              name="video"
+              size={30}
+              color="#fff"
+              style={{ display: num ? "flex" : "none" }}
+            />
+          </TouchableOpacity>
           <View style={styles.callBtn}>
             <Zocial name="call" size={40} color="#fff" />
           </View>
-          <FontAwesome5
+          <TouchableOpacity
             onPress={handleDeleteNum}
-            name="backspace"
-            size={24}
-            color="#fff"
-          />
+            activeOpacity={0.7}
+            onLongPress={() => setNum("")}
+          >
+            <FontAwesome5
+              name="backspace"
+              size={24}
+              color="#fff"
+              style={{ display: num ? "flex" : "none" }}
+            />
+          </TouchableOpacity>
         </View>
 
         {/* navigation */}
