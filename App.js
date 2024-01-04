@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import {
   Zocial,
   Ionicons,
@@ -31,6 +31,9 @@ export default function App() {
       <View style={styles.container}>
         {/* TopNavBar */}
         <View style={styles.topNav}>
+          <View style={styles.phoneHeaderTextBox}>
+            <Text style={styles.headerText}>Phone</Text>
+          </View>
           <AntDesign
             style={styles.optionIcon}
             name="search1"
@@ -87,10 +90,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: "black",
     justifyContent: "space-between",
+    alignItems: "center",
   },
-
   callBtnBox: {
-    width: "100%",
+    width: "85%",
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
@@ -110,11 +113,20 @@ const styles = StyleSheet.create({
   },
   topNav: {
     flex: 1,
+    width: "100%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-end",
-    marginTop: 50,
+    marginTop: 0,
     paddingHorizontal: 20,
+  },
+  phoneHeaderTextBox: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  headerText: {
+    color: "#fff",
+    fontSize: 20,
   },
   optionIcon: {
     marginLeft: 50,

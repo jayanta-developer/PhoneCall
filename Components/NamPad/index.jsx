@@ -3,7 +3,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Pressable
+  Pressable,
+  PreviewLayout
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from '@expo/vector-icons';
@@ -21,7 +22,7 @@ export default function NapPad({ setNum }) {
         <View style={styles.numOuterbox}>
           <Pressable style={styles.numBox} android_ripple={{ color: rippelColor }} onPress={() => handelNumClick("1")}>
             <Text style={styles.numPadText}>1</Text>
-            <Entypo name="voicemail" size={18} color="#D4D4D4" />
+            <Entypo style={styles.numSubText} name="voicemail" size={22} color="#D4D4D4" />
           </Pressable>
         </View>
 
@@ -117,7 +118,7 @@ export default function NapPad({ setNum }) {
 
 const styles = StyleSheet.create({
   numPad: {
-    width: "100%",
+    width: "85%",
     flexDirection: "column",
     paddingHorizontal: 60,
   },
@@ -133,30 +134,30 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
-    // borderColor: "green",
     borderWidth: 1,
-
   },
   numPadText: {
     color: "#fff",
-    fontSize: 55,
-    textAlign: "center"
+    fontSize: 50,
   },
   numSubText: {
-    fontSize: 11,
+    fontSize: 12,
     color: "#f2f2f2",
-    textAlign: "center"
+    textAlign: "center",
+    position: "absolute",
+    bottom: 0
   },
   plassIcon: {
     fontSize: 16,
     color: "#f2f2f2",
-    textAlign: "center"
+    textAlign: "center",
+    position: 'absolute',
+    bottom: 0
   },
   numOuterbox: {
     // borderColor: "red",
     borderWidth: 1,
     borderRadius: 50,
-    overflow: "hidden"
+    overflow: "hidden",
   }
 })
